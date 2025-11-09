@@ -1,0 +1,46 @@
+﻿@model eBank.Models.TransferMoneyModel
+
+@{
+    ViewData["Title"] = "Överför pengar";
+    var accounts = ViewBag.Accounts as List<eBank.Models.BankAccount>;
+}
+
+<h2>Överför pengar</h2>
+
+@if (accounts == null || !accounts.Any())
+{
+    <p>Du har inga aktiva konton att överföra mellan.</p>
+}
+else
+{
+    <form asp-action="Transfer" method="post">
+        <div class="mb-3">
+            <label asp-for="fromAccountId" class="form-label"></label>
+            <select asp-for="fromAccountId" class="form-select" asp-items="@(new SelectList(accounts, "Id", "AccountName"))">
+                <option value="">-- Välj konto --</option>
+            </select>
+            <span asp-validation-for="fromAccountId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="toAccountId" class="form-label"></label>
+            <select asp-for="toAccountId" class="form-select" asp-items="@(new SelectList(accounts, "Id", "AccountName"))">
+                <option value="">-- Välj konto --</option>
+            </select>
+            <span asp-validation-for="toAccountId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Amount" class="form-label"></label>
+            <input asp-for="Amount" class="form-control" />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Överför</button>
+        <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+    </form>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

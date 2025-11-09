@@ -1,0 +1,34 @@
+﻿@model eBank.Models.BankAccount
+
+@{
+    ViewData["Title"] = "Skapa nytt konto";
+}
+
+<h2>Skapa nytt bankkonto</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="AccountName" class="form-label"></label>
+        <input asp-for="AccountName" class="form-control" />
+        <span asp-validation-for="AccountName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Currency" class="form-label"></label>
+        <input asp-for="Currency" class="form-control" placeholder="t.ex. SEK eller USD" />
+        <span asp-validation-for="Currency" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Balance" class="form-label"></label>
+        <input asp-for="Balance" class="form-control" />
+        <span asp-validation-for="Balance" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Skapa</button>
+    <a asp-action="Index" class="btn btn-secondary">Tillbaka</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

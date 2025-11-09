@@ -1,0 +1,208 @@
+﻿@model IEnumerable<eBank.Models.BankAccount>
+@{
+    ViewData["Title"] = "eBank";
+}
+<!-- Bootstrap & Font Awesome -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="container mt-5">
+    <h1 class="mb-5 text-center fw-bold">Välkommen till din bank!</h1>
+
+    <div class="row g-4">
+        <!-- Ansök om lån -->
+        <div class="col-md-3">
+            <div class="card text-white bg-success h-100 shadow-sm rounded-4">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <i class="fas fa-hand-holding-usd fa-3x mb-3"></i>
+                    <h3 class="mb-2">Ansök om lån</h3>
+                    <p class="text-white-50">Snabb och säker låneansökan direkt i appen.</p>
+                    <a href="/Loan/Apply" class="btn btn-light mt-auto fw-bold">
+                        Ansök nu <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Befintliga lån -->
+        <div class="col-md-3">
+            <div class="card text-white bg-secondary h-100 shadow-sm rounded-4">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <i class="fas fa-hand-holding-usd fa-3x mb-3"></i>
+                    <h3 class="mb-2">Se befintliga lån</h3>
+                    <p class="text-white-50">Håll koll på dina aktuella lån och återbetalningar.</p>
+                    <a href="/Loan/MyLoans" class="btn btn-light mt-auto fw-bold">
+                        Se lån <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bankkonton -->
+        <div class="col-md-3">
+            <div class="card text-white bg-primary h-100 shadow-sm rounded-4">
+                <div class="card-body text-center d-flex flex-column justify-content-center">
+                    <i class="fas fa-university fa-3x mb-3"></i>
+                    <h3 class="mb-2">@Model.Count(a => a.IsActive)</h3>
+                    <p class="text-white-50">Dina aktiva bankkonton</p>
+                    <a href="#" class="btn btn-light mt-auto fw-bold" data-bs-toggle="modal" data-bs-target="#accountsModal">
+                        Mer info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transaktioner -->
+        <div class="col-md-3">
+            <div class="card text-dark bg-warning h-100 shadow-sm rounded-4">
+                <div class="card-body d-flex flex-column justify-content-center text-center">
+                    <i class="fas fa-exchange-alt fa-2x mb-3"></i>
+                    <h5 class="card-title mb-2">Transaktioner</h5>
+                    <p class="card-text text-dark-50">Överför pengar mellan dina konton snabbt och enkelt.</p>
+                    <a asp-controller="BankAccount" asp-action="Transfer" class="btn btn-light mt-2 w-100 fw-bold">
+                        Överför pengar
+                    </a>
+                    <a asp-controller="BankAccount" asp-action="History" class="btn btn-light mt-2 w-100 fw-bold">
+                        Visa historik
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Modal: Account list -->
+    <div class="modal fade" id="accountsModal" tabindex="-1" aria-labelledby="accountsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="accountsModalLabel">Dina bankkonton</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Stäng"></button>
+                </div>
+                <div class="modal-body">
+                    @if (Model != null && Model.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Kontonamn</th>
+                                    <th>Kontonummer</th>
+                                    <th>Saldo</th>
+                                    <th>Valuta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var account in Model.Where(a => a.IsActive))
+                                {
+                                    <tr>
+                                        <td>@account.AccountName</td>
+                                        <td>@account.AccountNumber</td>
+                                        <td>@account.Balance.ToString("C")</td>
+                                        <td>@account.Currency</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>Du har inga konton ännu.</p>
+                    }
+                    <hr />
+                    <a asp-controller="BankAccount" asp-action="Create" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Skapa nytt konto
+                    </a>
+                    <a asp-controller="BankAccount" asp-action="Index" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Visa kontolistan
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stäng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Ekonomisk översikt -->
+<h2 class="mt-5 mb-4 text-center fw-bold">Ekonomisk översikt</h2>
+
+<!-- Tre summeringskort -->
+<div class="row text-center mb-4 g-4">
+    <div class="col-md-4">
+        <div class="card bg-success text-white h-100 shadow-sm rounded-4">
+            <div class="card-body">
+                <h5>Totala inkomster</h5>
+                <h3>@ViewBag.TotalIncome kr</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-danger text-white h-100 shadow-sm rounded-4">
+            <div class="card-body">
+                <h5>Totala utgifter</h5>
+                <h3>@ViewBag.TotalExpense kr</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-white h-100 shadow-sm rounded-4">
+            <div class="card-body">
+                <h5>Nettoresultat</h5>
+                <h3>@ViewBag.Net kr</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Diagram -->
+<div class="row g-4">
+    <div class="col-md-7">
+        <div class="card shadow-sm rounded-4">
+            <div class="card-header bg-light fw-bold">Inkomster vs Utgifter per månad</div>
+            <div class="card-body">
+                <canvas id="incomeExpenseChart" height="100"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="card shadow-sm rounded-4">
+            <div class="card-header bg-light fw-bold">Fördelning</div>
+            <div class="card-body">
+                <canvas id="incomeExpensePie"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const months = @Html.Raw(Json.Serialize(ViewBag.Months));
+    const incomes = @Html.Raw(Json.Serialize(ViewBag.Incomes));
+    const expenses = @Html.Raw(Json.Serialize(ViewBag.Expenses));
+
+    // StapleDiagram
+    new Chart(document.getElementById('incomeExpenseChart'), {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: [
+                { label: 'Inkomster', data: incomes, backgroundColor: 'rgba(40, 167, 69, 0.7)' },
+                { label: 'Utgifter', data: expenses, backgroundColor: 'rgba(220, 53, 69, 0.7)' }
+            ]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+    });
+
+    // circelDiagram
+    new Chart(document.getElementById('incomeExpensePie'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Inkomster', 'Utgifter'],
+            datasets: [{ data: [@ViewBag.TotalIncome, @ViewBag.TotalExpense], backgroundColor: ['#28a745', '#dc3545'] }]
+        },
+        options: { responsive: true }
+    });
+</script>
+

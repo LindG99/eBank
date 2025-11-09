@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Integritetspolicy";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white text-center py-4 rounded-top">
+            <h1 class="mb-0"><i class="fas fa-user-shield me-2"></i>@ViewData["Title"]</h1>
+        </div>
+
+        <div class="card-body p-4">
+            <p class="lead">
+                Vi på <strong>eBank</strong> värnar om din personliga integritet och tar skyddet av dina personuppgifter på största allvar.
+                Denna policy beskriver hur vi samlar in, använder och skyddar din information när du använder våra digitala tjänster.
+            </p>
+
+            <hr />
+
+            <h3><i class="fas fa-database me-2 text-success"></i> Vilka uppgifter vi samlar in</h3>
+            <p>Vi samlar endast in de uppgifter som behövs för att kunna erbjuda våra tjänster och uppfylla lagkrav, till exempel:</p>
+            <ul>
+                <li>Identitetsuppgifter (namn, personnummer, adress, kontaktinformation)</li>
+                <li>Finansiell information (kontonummer, transaktionshistorik, saldon)</li>
+                <li>Teknisk information (IP-adress, webbläsartyp, enhetsinformation vid inloggning)</li>
+            </ul>
+
+            <h3 class="mt-4"><i class="fas fa-lock me-2 text-success"></i> Hur vi använder dina uppgifter</h3>
+            <p>Dina uppgifter används för att:</p>
+            <ul>
+                <li>Hantera ditt bankkonto och genomföra betalningar och överföringar</li>
+                <li>Verifiera din identitet och förebygga bedrägerier</li>
+                <li>Uppfylla lagkrav enligt exempelvis penningtvättslagen</li>
+                <li>Ge dig tillgång till säker inloggning och personlig service</li>
+            </ul>
+
+            <h3 class="mt-4"><i class="fas fa-user-secret me-2 text-success"></i> Delning av information</h3>
+            <p>
+                Vi säljer aldrig dina uppgifter till tredje part.
+                Dina personuppgifter kan delas med betrodda samarbetspartners, exempelvis betalningsförmedlare och myndigheter,
+                endast när det är nödvändigt för att tillhandahålla tjänster eller uppfylla lagstadgade krav.
+            </p>
+
+            <h3 class="mt-4"><i class="fas fa-shield-alt me-2 text-success"></i> Säkerhet</h3>
+            <p>
+                Vi använder avancerade säkerhetsåtgärder såsom kryptering, flerfaktorsautentisering och kontinuerlig övervakning för att skydda dina uppgifter.
+                Endast behörig personal har tillgång till persondata, och alla anställda omfattas av sekretessavtal.
+            </p>
+
+            <h3 class="mt-4"><i class="fas fa-user-check me-2 text-success"></i> Dina rättigheter</h3>
+            <p>Du har rätt att:</p>
+            <ul>
+                <li>Begära utdrag av vilka personuppgifter vi har om dig</li>
+                <li>Begära rättelse eller radering av felaktiga uppgifter</li>
+                <li>Invända mot viss behandling eller återkalla ditt samtycke</li>
+                <li>Lämna klagomål till Integritetsskyddsmyndigheten (IMY)</li>
+            </ul>
+
+            <h3 class="mt-4"><i class="fas fa-envelope me-2 text-success"></i> Kontakt</h3>
+            <p>
+                Om du har frågor kring vår integritetspolicy eller hur vi behandlar dina personuppgifter,
+                är du välkommen att kontakta oss:
+            </p>
+            <p class="mb-0">
+                <strong>eBank AB</strong><br />
+                Kundservice: <a href="mailto:integritet@dinbank.se">integritet@ebank.se</a><br />
+                Telefon: 08-123 456 78<br />
+                Adress: Bankgatan 1, 111 22 Stockholm
+            </p>
+        </div>
+
+        <div class="card-footer text-center text-muted small">
+            <i class="fas fa-clock me-1"></i> Senast uppdaterad: @DateTime.Now.ToString("MMMM yyyy", new System.Globalization.CultureInfo("sv-SE"))
+        </div>
+    </div>
+</div>

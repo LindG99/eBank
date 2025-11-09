@@ -1,0 +1,54 @@
+﻿@model IEnumerable<eBank.Models.Loan>
+@{
+    ViewData["Title"] = "Mina lån";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Du har inga lån just nu.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Lånebelopp</th>
+                <th>Kvar att betala</th>
+                <th>Status</th>
+                <th>Åtgärd</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loan in Model)
+            {
+                <tr>
+                    <td>@loan.OriginalAmount.ToString("C")</td>
+                    <td>@loan.RemainingAmount.ToString("C")</td>
+                    <td>
+                        @if (loan.IsPaid)
+                        {
+                            <span class="badge bg-success">Betalt</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning text-dark">Aktivt</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!loan.IsPaid)
+                        {
+                            <form asp-action="Pay" method="post" class="d-flex">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="loanId" value="@loan.Id" />
+                                <input type="number" name="amount" class="form-control me-2" step="any" placeholder="Belopp" />
+                                <button type="submit" class="btn btn-success btn-sm">Betala</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

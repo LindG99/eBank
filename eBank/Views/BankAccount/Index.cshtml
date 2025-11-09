@@ -1,0 +1,45 @@
+﻿@model IEnumerable<eBank.Models.BankAccount>
+
+@{
+    ViewData["Title"] = "Mina konton";
+}
+
+<h2>Mina bankkonton</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Skapa nytt konto</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Konto</th>
+            <th>Kontonummer</th>
+            <th>Saldo</th>
+            <th>Valuta</th>
+            <th>Aktivt</th>
+            <th>Skapad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model.Where(a => a.IsActive))
+        {
+            <tr>
+                <td>@account.AccountName</td>
+                <td>@account.AccountNumber</td>
+                <td>@account.Balance.ToString("C")</td>
+                <td>@account.Currency</td>
+                <td>@(account.IsActive ? "Ja" : "Nej")</td>
+                <td>@account.CreatedAt.ToShortDateString()</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@account.Id" method="post" onsubmit="return confirm('Är du säker på att du vill ta bort detta konto?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Ta bort</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>Du har inga konton ännu.</p>
+}

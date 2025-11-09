@@ -1,0 +1,36 @@
+﻿@model IEnumerable<eBank.Models.TransferHistory>
+
+@{
+    ViewData["Title"] = "Överföringshistorik";
+}
+
+<h2>Överföringshistorik</h2>
+
+@if (!Model.Any())
+{
+    <p>Du har inga tidigare överföringar.</p>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Datum</th>
+                <th>Från konto</th>
+                <th>Till konto</th>
+                <th>Belopp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Date.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@item.FromAccount?.AccountName (@item.FromAccount?.AccountNumber)</td>
+                    <td>@item.ToAccount?.AccountName (@item.ToAccount?.AccountNumber)</td>
+                    <td>@item.Amount.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

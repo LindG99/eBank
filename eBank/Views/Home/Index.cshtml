@@ -1,0 +1,59 @@
+﻿@using Microsoft.Extensions.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["HomeTitle"]; 
+}
+
+<div class="container mt-5">
+    <!-- Hero section -->
+    <div class="row align-items-center text-center text-md-start">
+        <div class="col-md-6">
+            <h1 class="display-4 fw-bold text-success">
+                <i class="fas fa-university me-2"></i>@Localizer["homeTitle"]
+            </h1>
+            <p class="lead mt-3">
+                @Localizer["infoTitle"]
+            </p>
+
+            <div class="mt-4">
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-success btn-lg me-3 shadow">
+                    <i class="fas fa-sign-in-alt me-2"></i>@Localizer["signinTitle"]
+                </a>
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-outline-success btn-lg shadow">
+                    <i class="fas fa-user-plus me-2"></i>@Localizer["registerTitle"]
+                </a>
+            </div>
+        </div>
+
+        <!-- Illustration / hero image -->
+        <div class="col-md-6 mt-5 mt-md-0 text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+                 alt="Bank illustration"
+                 class="img-fluid rounded shadow-sm"
+                 style="max-height: 320px;">
+        </div>
+    </div>
+
+    <!-- Features section -->
+    <div class="row text-center mt-5 pt-4 border-top">
+        <div class="col-md-4 mb-4">
+            <i class="fas fa-lock fa-3x text-success mb-3"></i>
+            <h4>@Localizer["saftyTitle"]</h4>
+            <p>@Localizer["saftyInfo"]</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <i class="fas fa-bolt fa-3x text-success mb-3"></i>
+            <h4>@Localizer["transactionTitle"]</h4>
+            <p>@Localizer["transactionInfo"]</p>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <i class="fas fa-headset fa-3x text-success mb-3"></i>
+            <h4>@Localizer["supportTitle"]</h4>
+            <p>@Localizer["supportInfo"]</p>
+        </div>
+    </div>
+</div>
