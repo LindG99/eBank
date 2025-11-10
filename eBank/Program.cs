@@ -1,4 +1,5 @@
 using eBank.Data;
+using eBank.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
@@ -13,8 +14,6 @@ namespace eBank
         {
             // Set QuestPDF license
             QuestPDF.Settings.License = LicenseType.Community;
-
-
 
             var builder = WebApplication.CreateBuilder(args);
 
@@ -53,10 +52,13 @@ namespace eBank
             builder.Services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.HttpOnly = true;
-                options.Cookie.SameSite = SameSiteMode.Lax;  
-                options.Cookie.SecurePolicy = CookieSecurePolicy.None; 
+                options.Cookie.SameSite = SameSiteMode.Lax;
+                //CookieSecurePolicy.Always, CookieSecurePolicy.None or CookieSecurePolicy.SameAsRequest?
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always; 
             });
-
+            //HttpClient
+            builder.Services.AddHttpClient<CoinService>();
+            builder.Services.AddSingleton<CoinService>();
 
             var app = builder.Build();
 

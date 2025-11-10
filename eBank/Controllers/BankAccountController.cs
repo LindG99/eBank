@@ -39,7 +39,7 @@ namespace eBank.Controllers
 
         //Handle form submission to create a new bank account
         [HttpPost]
-        // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(BankAccount model)
         {
             // UserId & AccountNumber before validation

@@ -1,0 +1,29 @@
+﻿@model eBank.Models.CryptoDetails
+
+@{
+    ViewData["Title"] = $"{Model.Name} detaljer";
+}
+
+<h2>@Model.Name (@Model.Symbol.ToUpper())</h2>
+
+<div style="display:flex; gap:20px; align-items:flex-start; margin-top:20px;">
+    <img src="@Model.ImageUrl" alt="@Model.Name" width="100" height="100" style="border-radius:10px;" />
+
+    <div>
+        <p><strong>Pris (USD):</strong> @(Model.PriceUsd?.ToString("C2") ?? "Ingen data")</p>
+        <p><strong>Pris (SEK):</strong> @(Model.PriceSek?.ToString("C2") ?? "Ingen data")</p>
+        <p><strong>Prisändring (24h):</strong> @(Model.PriceChange24h?.ToString("F2") ?? "Ingen data") %</p>
+    </div>
+</div>
+
+<hr />
+
+<h4>Beskrivning</h4>
+<div style="max-width:600px;">
+    @Html.Raw(Model.Description)
+</div>
+
+<br />
+
+<a asp-controller="Crypto" asp-action="Index" class="btn btn-secondary">← Tillbaka till listan</a>
+

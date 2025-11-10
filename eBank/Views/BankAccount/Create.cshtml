@@ -7,6 +7,7 @@
 <h2>Skapa nytt bankkonto</h2>
 
 <form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
     <div class="form-group mb-3">
         <label asp-for="AccountName" class="form-label"></label>
         <input asp-for="AccountName" class="form-control" />

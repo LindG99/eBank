@@ -1,0 +1,62 @@
+﻿@model List<eBank.Models.CryptoListItem>
+
+<h2>Välj en kryptovaluta</h2>
+
+<div class="d-flex mb-4 align-items-end">
+    <!-- Sökfält -->
+    <form method="get" asp-controller="Crypto" asp-action="Index" class="me-3 flex-grow-1">
+        <label for="searchInput" class="form-label">Sök coins:</label>
+        <div class="d-flex">
+            <input type="text" id="searchInput" name="search" value="@ViewBag.SearchTerm"
+                   placeholder="Skriv coin-namn eller symbol..." class="form-control me-2" />
+            <button type="submit" class="btn btn-primary">Sök</button>
+        </div>
+    </form>
+
+    <!-- Dropdown -->
+    <form method="get" asp-controller="Crypto" asp-action="Details">
+        <label for="coinSelect" class="form-label">Välj coin:</label>
+        <select id="coinSelect" name="id" class="form-select" onchange="this.form.submit()">
+            <option value="">-- välj en coin --</option>
+            @foreach (var coin in Model)
+            {
+                <option value="@coin.Id">@coin.Name (@coin.Symbol.ToUpper())</option>
+            }
+        </select>
+    </form>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Coin</th>
+            <th>Symbol</th>
+            <th>Pris (USD)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coin in Model.Take(100))
+        {
+            <tr>
+                <td>@coin.Name</td>
+                <td>@coin.Symbol.ToUpper()</td>
+                <td>@(coin.PriceUsd?.ToString("C2") ?? "Ingen data")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const coinTable = document.getElementById('coinTable').getElementsByTagName('tbody')[0];
+
+    searchInput.addEventListener('keyup', function () {
+        const filter = searchInput.value.toLowerCase();
+        Array.from(coinTable.getElementsByTagName('tr')).forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(filter) ? '' : 'none';
+        });
+    });
+</script>
+
+
