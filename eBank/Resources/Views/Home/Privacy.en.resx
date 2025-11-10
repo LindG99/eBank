@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Adva" xml:space="preserve">
+    <value>We use advanced security measures such as encryption, multi-factor authentication, and continuous monitoring to protect your information.
+Only authorized personnel have access to personal data, and all employees are bound by confidentiality agreements.</value>
+  </data>
+  <data name="Cerain" xml:space="preserve">
+    <value>Object to certain processing or withdraw your consent</value>
+  </data>
+  <data name="Complaint" xml:space="preserve">
+    <value>Submit a complaint to the Swedish Authority for Privacy Protection (IMY)</value>
+  </data>
+  <data name="Finans" xml:space="preserve">
+    <value>Financial information (account numbers, transaction history, balances)</value>
+  </data>
+  <data name="Fraud" xml:space="preserve">
+    <value>Request a copy of the personal data we hold about you</value>
+  </data>
+  <data name="Identity" xml:space="preserve">
+    <value>Identity information (name, personal identification number, address, contact information)</value>
+  </data>
+  <data name="IncorrectInfo" xml:space="preserve">
+    <value>Request correction or deletion of incorrect information</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>What information we collect</value>
+  </data>
+  <data name="Kontakt" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="LeadDesc" xml:space="preserve">
+    <value>values your personal privacy and takes the protection of your personal data very seriously.
+This policy describes how we collect, use, and safeguard your information when you use our digital services.</value>
+  </data>
+  <data name="LegarRec" xml:space="preserve">
+    <value>Comply with legal requirements, such as anti-money laundering regulations</value>
+  </data>
+  <data name="MngAcc" xml:space="preserve">
+    <value>Manage your bank account and carry out payments and transfers</value>
+  </data>
+  <data name="MngInfo" xml:space="preserve">
+    <value>How we use your information</value>
+  </data>
+  <data name="NeverSell" xml:space="preserve">
+    <value>We never sell your information to third parties.
+Your personal data may be shared with trusted partners, such as payment processors and authorities, only when necessary to provide services or comply with legal requirements.</value>
+  </data>
+  <data name="Questions" xml:space="preserve">
+    <value>If you have any questions regarding our privacy policy or how we process your personal data,
+you are welcome to contact us at:</value>
+  </data>
+  <data name="RightTo" xml:space="preserve">
+    <value>You have right to:</value>
+  </data>
+  <data name="Safty" xml:space="preserve">
+    <value>Safty</value>
+  </data>
+  <data name="SecureLogin" xml:space="preserve">
+    <value>Provide you with secure login and personalized service</value>
+  </data>
+  <data name="ShareInfo" xml:space="preserve">
+    <value>Sharing of information</value>
+  </data>
+  <data name="TechInfo" xml:space="preserve">
+    <value>Technical information (IP address, browser type, device information upon login)</value>
+  </data>
+  <data name="UseFor" xml:space="preserve">
+    <value>Your information is used to:</value>
+  </data>
+  <data name="VerifyAcc" xml:space="preserve">
+    <value>Verify your identity and prevent fraud</value>
+  </data>
+  <data name="WeInfo" xml:space="preserve">
+    <value>We only collect the information necessary to provide our services and comply with legal requirements, such as:</value>
+  </data>
+  <data name="WeOn" xml:space="preserve">
+    <value>We on</value>
+  </data>
+  <data name="YourRights" xml:space="preserve">
+    <value>Your rights</value>
+  </data>
+</root>

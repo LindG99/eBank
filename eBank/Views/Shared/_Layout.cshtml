@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -48,13 +51,13 @@
 
                     <partial name="_LoginPartial" />
 
-                    <form asp-controller="Language" asp-action="SetLanguage" method="post" class="d-inline ms-3">
-                        <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
-                        <select name="culture" onchange="this.form.submit()" class="form-select form-select-sm w-auto d-inline-block">
-                            <option value="sv" selected="@((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "sv"))">🇸🇪 Svenska</option>
-                            <option value="en" selected="@((System.Threading.Thread.CurrentThread.CurrentCulture.Name == "en"))">🇬🇧 English</option>
-                        </select>
-                    </form>
+                   <form asp-controller="Language" asp-action="SetLanguage" method="post" class="d-inline ms-3">
+                            <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                            <select name="culture" onchange="this.form.submit()" class="form-select form-select-sm w-auto d-inline-block">
+                            <option value="sv-SE" selected="@(currentCulture == "sv-SE" ? "selected" : null)" asp-for="!">🇸🇪 Svenska</option>
+                            <option value="en-US" selected="@(currentCulture == "en-US")" asp-append-version="false">🇬🇧 English</option>
+                            </select>
+                        </form>
                 </div>
             </div>
         </nav>
