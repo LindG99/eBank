@@ -1,6 +1,9 @@
 # eBank - Your Fun Digital Banking Playground 💰🎉
 Because managing money doesn't have to be boring!
 
+#Material#
+Youtube, Documentations & AI.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 eBank is a modern digital banking web application built with **ASP.NET Core MVC** and **C#**, designed for fun (and learning!). Manage your bank accounts, play around with transactions, check out crypto prices, and maybe even pretend you're a millionaire. 🤑
